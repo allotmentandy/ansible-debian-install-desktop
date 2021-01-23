@@ -1,0 +1,19 @@
+---
+
+- hosts: local
+  vars_files:
+    - group_vars/all.yml
+
+  roles:
+
+    - common       # List of essential packages
+    - design       # Design pack
+    #- latex        # Latex and ide texmaker
+    - composer
+    - nodejs
+    - browsers
+    - dev
+    - multimedia
+    - virtualization
+    #- users
+    - awesome

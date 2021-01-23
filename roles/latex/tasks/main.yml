@@ -1,0 +1,8 @@
+---
+
+- name: LATEX | Install package
+  apt:
+    name:
+      - texmaker
+      - texlive
+    state: latest

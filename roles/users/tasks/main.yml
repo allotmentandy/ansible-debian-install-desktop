@@ -1,0 +1,17 @@
+---
+- name: Add the user 'liquuid' 
+  user:
+    name: liquuid
+    comment: liquuid
+    uid: 1000
+    groups: wheel, docker, vboxusers, libvirt, kvm
+    append: yes
+
+- name: Add the user 'gu' 
+  user:
+    name: gu
+    comment: gu
+    uid: 1001
+    groups: docker
+    append: yes
+

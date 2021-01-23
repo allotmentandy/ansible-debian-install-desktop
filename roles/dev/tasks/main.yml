@@ -1,0 +1,103 @@
+---
+- name: Install X11 libs
+  apt:
+    name:
+      - build-essential
+      - libx11-dev
+      - libxcursor-dev 
+      - libxrandr-dev
+      - libxinerama-dev
+      - libxi-dev
+      - libgl1-mesa-dev
+      - g++
+      - libsdl2-gfx-dev
+      - libsdl2-image-dev
+      - libsdl2-mixer-dev
+      - libsdl2-ttf-dev
+      - libsdl2-dev
+      - libxxf86vm-dev
+      - intltool
+      - libglib2.0-dev
+      - libtool
+      - fonts-firacode
+    state: present
+
+- name: Install "Snap"
+  apt: name=snapd state=latest 
+
+- name: Enable "Snap"
+  service: name=snapd state=started enabled=yes
+
+  #- name: Create "snap" symlink
+  #file:
+  #  src:  /var/lib/snapd/snap
+  #  dest: /snap
+  #  owner: root
+  #  state: link
+
+
+- name: Install "phpstorm" with option --classic
+  snap:
+    name: phpstorm
+    classic: yes
+
+- name: Install "goland" with option --classic
+  snap:
+    name: goland
+    classic: yes
+
+
+- name: Install "clion" with option --classic
+  snap:
+    name: clion
+    classic: yes
+
+- name: Install "webstorm" with option --classic
+  snap:
+    name: webstorm
+    classic: yes
+
+- name: Install "pycharm-professional" with option --classic
+  snap:
+    name: pycharm-professional
+    classic: yes
+
+- name: Install "vscode" with option --classic
+  snap:
+    name: code
+    classic: yes
+
+- name: Install "insomnia" 
+  snap:
+    name: insomnia
+    state: absent
+
+- name: Install "postbird" 
+  snap:
+    name: postbird        
+
+- name: Install "codeblocks"
+  apt:
+    name: codeblocks
+
+- name: Install "android-studio"
+  snap:
+    name: android-studio
+    classic: yes
+
+- name: Install "anjuta"
+  apt:
+    name: anjuta
+
+- name: Install "arduino"
+  apt:
+    name: arduino
+
+- name: Install "micro"
+  apt:
+    name: micro
+
+- name: Install DBeaver
+  flatpak:
+    name: io.dbeaver.DBeaverCommunity
+    state: present

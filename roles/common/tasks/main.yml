@@ -1,0 +1,70 @@
+---
+
+- name: Package | Install lists packages
+  apt:
+    name:
+      - cargo
+      - gnome-software-plugin-flatpak
+      - openssh-server
+      - snapd
+      - flatpak
+      - zsh
+      - geary
+      - bash-completion
+      - openssh-server
+      - vim
+      - git
+      - unar
+      - htop
+      - tree
+      - dstat
+      - screen
+      - curl
+      - wget
+      - ccze
+      - tmux
+      - terminator
+      - tig
+      - unzip
+      - neofetch
+      - iotop
+      - pciutils
+      - usbutils
+      - nmap
+      - youtube-dl
+      - squashfs-tools
+      - shntool
+      - unrar
+      - p7zip
+      - mc
+      - nnn
+      - sshfs
+      - gnome-tweak-tool
+      - qt5ct
+      - chrome-gnome-shell
+      - webp
+      - pdf2djvu
+      - poppler-utils
+      - imagemagick
+      - xclip
+      - openssh-server  
+
+    state: present
+
+- name: Setup SSHD
+  service: name=ssh state=started enabled=yes
+
+
+- name: Install webp thumbnailer
+  template:
+    src: webp.thumbnailer
+    dest: /usr/share/thumbnailers/
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Add the flathub flatpak repository remote to the user installation
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo

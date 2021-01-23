@@ -1,0 +1,26 @@
+---
+- name: Add gpg key to Yarn
+  shell: curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add 
+
+- name: Add Yarn repo
+  shell: echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+
+  #- name: Add gpg key to Node
+
+  #- name: Node.js
+  #apt:
+  #  name:
+  #    - nodejs
+  #  state: latest
+  #  update_cache: yes
+
+- name: Nodejs
+  snap:
+      name: node
+      classic: yes
+
+- name: Yarn
+  apt:
+    name:
+      - yarnpkg
+    state: latest

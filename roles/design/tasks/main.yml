@@ -1,0 +1,24 @@
+---
+
+- name: Scribus | Install package
+  apt: pkg=scribus state=present
+
+- name: Gimp | Install package
+  apt:
+    name:
+      - gimp
+    state: latest
+
+- name: Inkscape | Install package
+  apt:
+    name:
+      - inkscape
+    state: latest
+
+- name: Apps multimedia
+  apt:
+    name: 
+      - blender
+      - kdenlive
+      - obs-studio
+    state: latest

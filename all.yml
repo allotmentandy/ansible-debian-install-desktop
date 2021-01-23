@@ -1,0 +1,14 @@
+user: liquuid
+
+web:
+  httpd_port: 80
+  domain: localhost
+  project_path: /home/liquuid/devel
+
+
+php5:
+  php_date_timezone: 'America/Sao_Paulo'
+
+mariadb:
+  current_password: ''
+  root_password: dev

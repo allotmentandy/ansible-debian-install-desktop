@@ -1,0 +1,24 @@
+---
+
+- name: Package | Install lists packages
+  apt:
+    name:
+      - mpv
+        #- webp-pixbuf-loader
+      - webp
+      - gthumb
+      - lmms
+      - ffmpeg
+      - x264
+      - x265
+      - audacity
+      - transmission
+      - clementine
+      - pitivi
+        #- gstreamer1-plugin-openh264
+        #- gstreamer1-plugins-bad-free-extras
+        #- gstreamer1-plugins-bad-freeworld
+        #- gstreamer1-plugins-good-extras
+        #- gstreamer1-plugins-ugly
+        #- gstreamer1-vaapi
+    state: latest

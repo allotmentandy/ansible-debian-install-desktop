@@ -1,0 +1,25 @@
+---
+
+- name: Install Awesome WM
+  apt:
+    name: awesome
+    state: present
+
+- name: Install Minimal Tools
+  apt:
+    name:
+      - arandr
+      - nm-tray
+      - nitrogen
+      - xfce4-power-manager
+      - mpv
+      - slim
+      - sakura
+      - dmenu
+      - rofi
+      - surf
+      - vifm
+      - cmus
+      - lynx
+      - pcmanfm
+      - krusader

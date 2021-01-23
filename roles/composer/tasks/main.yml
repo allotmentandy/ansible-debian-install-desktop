@@ -1,0 +1,8 @@
+---
+
+- name: Composer
+  apt:
+    name:
+      - composer
+
+    state: latest

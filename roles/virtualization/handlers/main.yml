@@ -1,0 +1,4 @@
+---
+
+- name: Restart virtualbox
+  service: name=ntp state=restarted
