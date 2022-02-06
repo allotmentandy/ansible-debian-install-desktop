@@ -83,12 +83,12 @@
     cache_valid_time: 3600
   become: True
 
-- name: Enable the Apache2 module for php8.0
-  apache2_module:
-    name: 'php8.0'
-    state: present
-    ignore_configcheck: True
-  become: True
+# - name: Enable the Apache2 module for php8.0
+#   apache2_module:
+#     name: 'php8.0'
+#     state: present
+#     ignore_configcheck: True
+#   become: True
 
 - name: ensure apache is restarted
   service:

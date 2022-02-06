@@ -3,9 +3,12 @@
 
 Set the ip address in `hosts`
 
-install mod for a2enmod for apache
-ansible-galaxy collection install community.general
 
+install galaxy collection modules for a2enmod for apache with the command
+
+```
+ansible-galaxy collection install community.general
+```
 
 To run 
 ```
