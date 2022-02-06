@@ -16,7 +16,9 @@
       - golang-go
       - patch
     state: latest
-
+  become: yes
+  become_method: su
+  
 - name: Enable docker
   service:
     name: docker

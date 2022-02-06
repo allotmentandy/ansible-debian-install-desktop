@@ -1,6 +1,6 @@
 ---
 
-- hosts: local
+- hosts: debian
   vars_files:
     - group_vars/all.yml
 
@@ -17,3 +17,5 @@
     - virtualization
     #- users
     - awesome
+    - sublime
+    - php

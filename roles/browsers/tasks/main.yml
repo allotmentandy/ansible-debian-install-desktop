@@ -1,24 +1,48 @@
 ---
 
-#- name: Google Chrome | Install lists packages
-#  dnf:
-#    name: https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-#    state: installed
-#    disable_gpg_check: yes
-
-- name: install|deb| add the apt key
+- name: Google Chrome | Pre requirements
+  apt:
+    name: gnupg
+    state: present
   become: true
+  become_method: su
+
+- name: Google Chrome | Add gpg
+  apt_key:
+    url: https://dl.google.com/linux/linux_signing_key.pub
+    state: present
+  become: true
+  become_method: su
+
+- name: Google Chrome | Apt Repository
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+    update_cache: true
+  become: true
+  become_method: su
+
+- name: Google Chrome | Installing latest version
+  apt:
+    name: google-chrome-stable
+    state: present
+  become: true
+
+- name: install brave the apt key
+  become: true
+  become_method: su
   shell: curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
 
-- name: install|deb| add the apt repository
+- name: install brave add the apt repository
   become: true
-  #shell: echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" > /etc/apt/sources.list.d/brave-browser-release.list
+  become_method: su
   apt_repository:
     repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main  
     state: present
 
 - name: Install Brave
   become: yes
+  become_method: su
   apt:
     name: brave-browser
     state: latest

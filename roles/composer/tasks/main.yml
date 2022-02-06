@@ -4,5 +4,6 @@
   apt:
     name:
       - composer
-
     state: latest
+  become: yes
+  become_method: su

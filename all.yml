@@ -1,13 +1,15 @@
-user: liquuid
+ansible_connection=ssh
+
+user: andy
 
 web:
   httpd_port: 80
   domain: localhost
-  project_path: /home/liquuid/devel
+  project_path: /home/andy/www
 
 
-php5:
-  php_date_timezone: 'America/Sao_Paulo'
+# php5:
+#   php_date_timezone: 'America/Sao_Paulo'
 
 mariadb:
   current_password: ''

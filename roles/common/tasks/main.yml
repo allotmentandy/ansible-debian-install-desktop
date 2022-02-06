@@ -1,9 +1,18 @@
 ---
 
+# - name: Run "apt-get update, upgrade and autoremove".
+#   become: yes
+#   become_method: su
+#   apt:
+#     update_cache: yes
+#     upgrade: yes
+#     autoremove: yes
+
 - name: Package | Install lists packages
   apt:
     name:
       - cargo
+      - terminology
       - gnome-software-plugin-flatpak
       - openssh-server
       - snapd
@@ -47,24 +56,101 @@
       - poppler-utils
       - imagemagick
       - xclip
-      - openssh-server  
-
+      - openssh-server
+      - thunderbird
+      - akregator
+      - apache2
+      - blueman
+      - bluez
+      - calibre
+      - chromium
+      - espeak
+      - evince
+      - filezilla
+      - gist
+      - git-flow
+      - git-ftp
+      - git-gui
+      - git-man
+      - git
+      - gman
+      - gnumeric
+      - gzip
+      - liferea
+      - mariadb-client
+      - mariadb-server
+      - mdp
+      - mixxx
+      - mupdf
+      - pokerth
+      - pysolfc
+      - quiterss
+      - spacefm
+      - thunar
+      - tldr
+      - tmux
+      - tree
+      - vim
+      - xdotool
+      - wmctrl
+      - wkhtmltopdf
+      - xgammon
+      - tali
+      - xfce4-appfinder
+      - xfce4-battery-plugin
+      - xfce4-clipman-plugin
+      - xfce4-clipman
+      - xfce4-cpufreq-plugin
+      - xfce4-cpugraph-plugin
+      - xfce4-datetime-plugin
+      - xfce4-dict
+      - xfce4-diskperf-plugin
+      - xfce4-fsguard-plugin
+      - xfce4-genmon-plugin
+      - xfce4-goodies
+      - xfce4-helpers
+      - xfce4-mailwatch-plugin
+      - xfce4-netload-plugin
+      - xfce4-notifyd
+      - xfce4-panel
+      - xfce4-places-plugin
+      - xfce4-power-manager-data
+      - xfce4-power-manager-plugins
+      - xfce4-power-manager
+      - xfce4-pulseaudio-plugin
+      - xfce4-screenshooter
+      - xfce4-sensors-plugin
+      - xfce4-session
+      - xfce4-settings
+      - xfce4-smartbookmark-plugin
+      - xfce4-systemload-plugin
+      - xfce4-taskmanager
+      - xfce4-terminal
+      - xfce4-timer-plugin
+      - xfce4-verve-plugin
+      - xfce4-wavelan-plugin
+      - xfce4-weather-plugin
+      - xfce4-whiskermenu-plugin
+      - xfce4-xkb-plugin
+      - xfce4
+      - transmission
     state: present
+  become: yes
 
 - name: Setup SSHD
   service: name=ssh state=started enabled=yes
 
 
-- name: Install webp thumbnailer
-  template:
-    src: webp.thumbnailer
-    dest: /usr/share/thumbnailers/
-    owner: root
-    group: root
-    mode: '0644'
+# - name: Install webp thumbnailer
+#   template:
+#     src: webp.thumbnailer
+#     dest: /usr/share/thumbnailers/
+#     owner: root
+#     group: root
+#     mode: '0644'
 
-- name: Add the flathub flatpak repository remote to the user installation
-  flatpak_remote:
-    name: flathub
-    state: present
-    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+# - name: Add the flathub flatpak repository remote to the user installation
+#   flatpak_remote:
+#     name: flathub
+#     state: present
+#     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo

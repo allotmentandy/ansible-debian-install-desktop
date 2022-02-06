@@ -1,0 +1,39 @@
+- name: Add Sublime Text Apt signing key
+  apt_key:
+    url: https://download.sublimetext.com/sublimehq-pub.gpg
+    state: present
+  become: True
+  become_method: su
+
+- name: Install apt-transport-https
+  apt: name=apt-transport-https state=latest
+  become: True
+  become_method: su
+
+- name: Select stable channel
+  apt_repository:
+    repo: deb https://download.sublimetext.com/ apt/stable/
+    state: present
+  become: True
+  become_method: su
+
+- name: Install Sublime Text
+  apt: name=sublime-text state=latest update_cache=yes
+  become: True
+  become_method: su
+  
+# - name: Make sure that Sublime Text user's settings directory exists
+#   file:
+#     state: directory
+#     path: ~/.config/sublime-text-3/Packages/User/
+#   become: True
+#   become_user: "{{ sublime_user }}"
+
+# - name: Configure Sublime Text user's settings
+#   template:
+#     src: Preferences.sublime-settings.j2
+#     dest: ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+#     force: True
+#     mode: 0644
+#   become: True
+#   become_user: "{{ sublime_user }}"

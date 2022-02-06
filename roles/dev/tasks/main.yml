@@ -21,12 +21,61 @@
       - libtool
       - fonts-firacode
     state: present
+  become_method: su
+  become: yes
+    
 
-- name: Install "Snap"
-  apt: name=snapd state=latest 
+- name: Add HashiCorp key.
+  become: yes
+  apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+    
 
-- name: Enable "Snap"
-  service: name=snapd state=started enabled=yes
+- name: Add HashiCorp repo.
+  become: yes
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
+    state: present
+    
+
+- name: Install HashiCorp tools.
+  become: yes
+  apt:
+    name:
+      - vagrant
+      - terraform
+      - vault
+    update_cache: yes
+    state: present
+    
+
+- name: Import Microsoft's signing key.
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  become: yes
+
+- name: Add VS Code repository.
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    filename: vscode
+    state: present
+  become: yes
+
+- name: Install VS Code.
+  apt:
+    name: "code"
+    state: present
+  become: yes
+
+  
+    
+# - name: Install "Snap"
+#   apt: name=snapd state=latest 
+
+# - name: Enable "Snap"
+#   service: name=snapd state=started enabled=yes
 
   #- name: Create "snap" symlink
   #file:
@@ -36,68 +85,68 @@
   #  state: link
 
 
-- name: Install "phpstorm" with option --classic
-  snap:
-    name: phpstorm
-    classic: yes
+# - name: Install "phpstorm" with option --classic
+#   snap:
+#     name: phpstorm
+#     classic: yes
 
-- name: Install "goland" with option --classic
-  snap:
-    name: goland
-    classic: yes
+# - name: Install "goland" with option --classic
+#   snap:
+#     name: goland
+#     classic: yes
 
 
-- name: Install "clion" with option --classic
-  snap:
-    name: clion
-    classic: yes
+# - name: Install "clion" with option --classic
+#   snap:
+#     name: clion
+#     classic: yes
 
-- name: Install "webstorm" with option --classic
-  snap:
-    name: webstorm
-    classic: yes
+# - name: Install "webstorm" with option --classic
+#   snap:
+#     name: webstorm
+#     classic: yes
 
-- name: Install "pycharm-professional" with option --classic
-  snap:
-    name: pycharm-professional
-    classic: yes
+# - name: Install "pycharm-professional" with option --classic
+#   snap:
+#     name: pycharm-professional
+#     classic: yes
 
-- name: Install "vscode" with option --classic
-  snap:
-    name: code
-    classic: yes
+# - name: Install "vscode" with option --classic
+#   snap:
+#     name: code
+#     classic: yes
 
-- name: Install "insomnia" 
-  snap:
-    name: insomnia
-    state: absent
+# - name: Install "insomnia" 
+#   snap:
+#     name: insomnia
+#     state: absent
 
-- name: Install "postbird" 
-  snap:
-    name: postbird        
+# - name: Install "postbird" 
+#   snap:
+#     name: postbird        
 
-- name: Install "codeblocks"
-  apt:
-    name: codeblocks
+# - name: Install "codeblocks"
+#   apt:
+#     name: codeblocks
 
-- name: Install "android-studio"
-  snap:
-    name: android-studio
-    classic: yes
+# - name: Install "android-studio"
+#   snap:
+#     name: android-studio
+#     classic: yes
 
-- name: Install "anjuta"
-  apt:
-    name: anjuta
+# - name: Install "anjuta"
+#   apt:
+#     name: anjuta
 
-- name: Install "arduino"
-  apt:
-    name: arduino
+# - name: Install "arduino"
+#   apt:
+#     name: arduino
 
-- name: Install "micro"
-  apt:
-    name: micro
+# - name: Install "micro"
+#   apt:
+#     name: micro
 
-- name: Install DBeaver
-  flatpak:
-    name: io.dbeaver.DBeaverCommunity
-    state: present
+# - name: Install DBeaver
+#   flatpak:
+#     name: io.dbeaver.DBeaverCommunity
+#     state: present

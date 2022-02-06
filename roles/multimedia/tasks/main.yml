@@ -22,3 +22,5 @@
         #- gstreamer1-plugins-ugly
         #- gstreamer1-vaapi
     state: latest
+  become: yes
+  become_method: su
