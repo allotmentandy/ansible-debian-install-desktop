@@ -1,7 +1,5 @@
 ansible_connection=ssh
 
-user: andy
-
 web:
   httpd_port: 80
   domain: localhost
