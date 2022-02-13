@@ -1,0 +1,84 @@
+---
+- name: install packages
+  apt:
+    name:
+      - default-mysql-server
+      - python3-pymysql
+      - php-mysql
+    state: present
+    cache_valid_time: 3600
+  become: True
+
+- name: enable mysql service
+  service:
+    name: mysql
+    state: started
+    enabled: 'yes'
+
+# - name: Change the authentication plugin of MySQL root user to mysql_native_password
+#   shell: mysql -e 'UPDATE mysql.user SET plugin="mysql_native_password"
+#     WHERE user="root"'
+#   become: True
+#   ignore_errors: True
+
+
+# - name: Add root user
+#   shell: mysql -e 'USE mysql; INSERT INGORE INTO `user` (`Host`, `User`, `Password`, `Select_priv`, `Insert_priv`, `Update_priv`, `Delete_priv`, `Create_priv`, `Drop_priv`, `Reload_priv`, `Shutdown_priv`, `Process_priv`, `File_priv`, `Grant_priv`, `References_priv`, `Index_priv`, `Alter_priv`, `Show_db_priv`, `Super_priv`, `Create_tmp_table_priv`, `Lock_tables_priv`, `Execute_priv`, `Repl_slave_priv`, `Repl_client_priv`, `Create_view_priv`, `Show_view_priv`, `Create_routine_priv`, `Alter_routine_priv`, `Create_user_priv`, `Event_priv`, `Trigger_priv`, `Create_tablespace_priv`, `Delete_history_priv`, `ssl_type`, `ssl_cipher`, `x509_issuer`, `x509_subject`, `max_questions`, `max_updates`, `max_connections`, `max_user_connections`, `plugin`, `authentication_string`, `password_expired`, `is_role`, `default_role`, `max_statement_time`) VALUES 'localhost',   'root', '*70716BA5C3522591069F4B7E1A26F6E3F469A964',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    'Y',    '', '', '', '', 0,  0,  0,  0,  'mysql_native_password',    '*70716BA5C3522591069F4B7E1A26F6E3F469A964',    'N',    'N',    '', 0.000000)'
+#   become: True
+#   ignore_errors: True
+
+# - name: Flush Privileges
+#   shell: mysql -u root -e 'FLUSH PRIVILEGES'
+#   become: True
+
+# - name: Set MySQL root password
+#   mysql_user:
+#     login_host: 'localhost'
+#     login_user: 'root'
+#     login_password: ''
+#     name: 'root'
+#     password: "{{ lookup('env', 'mysql_root_password') }}"
+#     state: present
+#   ignore_errors: True
+
+# - name: Set MariaDB root password for 127.0.0.1, localhost
+#   mysql_user:
+#     name: root
+#     password: "{{ lookup('env', 'mysql_root_password') }}"
+#     host: "{{ item }}"
+#     login_user: "{{ lookup('env', 'mysql_user') }}"
+#     login_password: "{{ lookup('env', 'mysql_root_password') }}"
+#     login_unix_socket: "/var/run/mysqld/mysqld.sock"
+#     state: present
+#   with_items:
+#     - 127.0.0.1
+#     - localhost
+#   # when: check_passwd_root.rc == 0
+#   notify: Flush Priviliges
+
+# - name: Set mysql root password
+#   mysql_user:
+#     name: root
+#     login_host: "{{ lookup('env', 'mysql_host') }}"
+#     login_user: "{{ lookup('env', 'mysql_user') }}"
+#     login_password: "{{ lookup('env', 'mysql_root_password') }}"
+#     login_port: 3310
+#     host_all: yes
+#     priv: '*.*:ALL,GRANT'
+#     login_unix_socket: /var/run/mysqld/mysqld.sock
+#     state: present
+
+# - name: Removes all anonymous users
+#   mysql_user:
+#     name: ''
+#     host_all: 'yes'
+#     state: 'absent'
+#     login_user: root
+#     login_password: "{{ mysql_root_password }}"
+
+# - name: Removes the MySQL test database
+#   mysql_db:
+#     name: test
+#     state: absent
+#     login_user: root
+#     login_password: "{{ mysql_root_password }}"

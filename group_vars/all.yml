@@ -16,8 +16,10 @@ web:
 #   php_date_timezone: 'America/Sao_Paulo'
 
 mariadb:
-  current_password: ''
-  root_password: dev
+  login_user: root
+  login_password : ''
+#   current_password: ''
+#   root_password: dev
 
 
 nodejs_version: "14.x"

@@ -134,6 +134,7 @@
       - xfce4-xkb-plugin
       - xfce4
       - transmission
+      - fzf
     state: present
   become: yes
 
