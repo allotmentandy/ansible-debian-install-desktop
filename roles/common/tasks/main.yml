@@ -135,6 +135,10 @@
       - xfce4
       - transmission
       - fzf
+      - deluge
+      - krita
+      - ufw
+      - chromium
     state: present
   become: yes
 

@@ -12,6 +12,7 @@
       - php-mbstring
       - php-bcmath
       - php-xml 
+      - php-curl
       - php-codesniffer
     state: present
     cache_valid_time: 3600

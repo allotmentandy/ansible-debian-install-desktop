@@ -1,0 +1,26 @@
+- name: Allow SSH in the firewall
+  ufw:
+   rule: allow
+   name: OpenSSH
+  become: True
+
+- name: Open 80 on firewall
+  ufw:
+   rule: allow
+   port: "80"
+   proto: tcp
+  become: True
+
+- name: Open 81 on firewall
+  ufw:
+   rule: allow
+   port: "81"
+   proto: tcp
+  become: True
+
+- name: Open 2999 on firewall
+  ufw:
+   rule: allow
+   port: "2999"
+   proto: tcp
+  become: True
