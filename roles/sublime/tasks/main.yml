@@ -21,7 +21,12 @@
   apt: name=sublime-text state=latest update_cache=yes
   become: True
   become_method: su
-  
+
+- name: Install Sublime Mergeg
+  apt: name=sublime-merge state=latest update_cache=yes
+  become: True
+  become_method: su
+
 # - name: Make sure that Sublime Text user's settings directory exists
 #   file:
 #     state: directory

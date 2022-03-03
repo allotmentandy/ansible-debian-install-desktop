@@ -9,7 +9,7 @@
     - common       # List of essential packages
     - design       # Design pack
     - composer
-    - nodejs
+    # - nodejs    # commented out for now
     - browsers
     - dev
     - multimedia

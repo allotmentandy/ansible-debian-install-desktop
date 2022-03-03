@@ -139,6 +139,10 @@
       - krita
       - ufw
       - chromium
+      - pv
+      - pencil2d
+      - karbon
+      - tweeper
     state: present
   become: yes
 
