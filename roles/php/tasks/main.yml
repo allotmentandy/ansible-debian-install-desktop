@@ -85,6 +85,32 @@
     cache_valid_time: 3600
   become: True
 
+# install php8.1
+
+- name: install php 8.1 packages
+  apt:
+    name:
+      - php8.1
+      - php-mysql
+      - libapache2-mod-php
+      - php8.1-mysql
+      - php8.1-cli
+      - php8.1-common
+      - php8.1-snmp
+      - php8.1-ldap
+      - php8.1-curl
+      - php8.1-mbstring
+      - php8.1-zip
+      - php8.1-tidy
+      - php8.1-opcache
+      - php8.1-xml
+      - php8.1-fpm 
+      - libapache2-mod-php8.1
+    state: present
+    cache_valid_time: 3600
+  become: True
+
+
 - name: Enable the Apache2 module proxy_fcgi for php to work
   community.general.apache2_module:
     state: present
