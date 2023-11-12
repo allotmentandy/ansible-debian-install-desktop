@@ -43,12 +43,11 @@
       - youtube-dl
       - squashfs-tools
       - shntool
-      - unrar
+      - unrar-free
       - p7zip
       - mc
       - nnn
       - sshfs
-      - gnome-tweak-tool
       - qt5ct
       - chrome-gnome-shell
       - webp
@@ -83,7 +82,6 @@
       - mixxx
       - mupdf
       - pokerth
-      - pysolfc
       - quiterss
       - spacefm
       - thunar
@@ -143,6 +141,9 @@
       - pencil2d
       - karbon
       - tweeper
+      - micro
+      - brightnessctl
+      - alsa-utils
     state: present
   become: yes
 
