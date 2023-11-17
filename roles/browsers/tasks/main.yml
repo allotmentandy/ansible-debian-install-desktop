@@ -71,9 +71,6 @@
     - opera
     - web
 
-
-
-
 # Instalação do Opera
 
 - name: Instalando o Opera
@@ -87,6 +84,22 @@
     - web
 
 
+- name: Microsoft Edge -  Add apt signing key
+  apt_key: 
+    url: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
 
+- name: Microsoft Edge - Add repository into sources list
+  apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+    state: present
+    filename: microsoft-edge
+  become: true
 
-    
+- name: Install microsoft-edge-stable
+  apt:
+    name: "microsoft-edge-stable"
+    state: latest
+    update_cache: yes
+  become: true
+
