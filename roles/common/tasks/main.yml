@@ -144,6 +144,10 @@
       - micro
       - brightnessctl
       - alsa-utils
+      - orage
+      - sqlmap
+      - wpscan
+      - cmseek
     state: present
   become: yes
 
