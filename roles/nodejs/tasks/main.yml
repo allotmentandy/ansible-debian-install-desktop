@@ -46,3 +46,10 @@
     name: "nodejs={{ nodejs_version|regex_replace('x', '') }}*"
     state: present
   become: yes
+
+- name: Install npm.
+  apt:
+    name:
+      - npm
+    state: present
+  become: yes

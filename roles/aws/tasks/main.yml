@@ -1,0 +1,10 @@
+
+- name: Package | Install aws and kubernetes packages
+  apt:
+    name:
+      - awscli
+      - eksctl
+      - kubernetes-client
+    state: present
+  tags: aws
+  become: yes

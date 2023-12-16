@@ -19,8 +19,17 @@
     - php
     - ufw
     # - mysql
+    - aws
 
 
 
     #- users
     #- latex        # Latex and ide texmaker
+
+
+# - name: jackett from galaxy
+#   hosts: all
+#   tags: jackett
+#   roles:
+#     - { role: chrisjohnson00.jackett, tags: ["jackett"]}
+#   become: yes

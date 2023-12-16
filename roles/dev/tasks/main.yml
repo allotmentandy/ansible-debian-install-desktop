@@ -35,7 +35,7 @@
 - name: Add HashiCorp repo.
   become: yes
   apt_repository:
-    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com stable main"
     state: present
     
 
