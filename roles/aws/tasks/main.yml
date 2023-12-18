@@ -1,10 +1,63 @@
 
+# https://subok-tech.com/installing-kubernetes-using-ansible-on-ubuntu-20-04/
+
+- name: Add Google official GPG key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  tags: aws
+  become: yes
+
+- name: Add Kubernetes Repository
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main 
+    state: present
+    filename: kubernetes
+    mode: 0600
+  tags: aws
+  become: yes
+
+- name: Installing Kubernetes Cluster Packages.
+  apt: 
+    name:
+     # - kubeadm
+     - kubelet
+     - kubectl
+    state: present
+  tags: aws
+  become: yes
+
 - name: Package | Install aws and kubernetes packages
   apt:
     name:
       - awscli
       - eksctl
-      - kubernetes-client
+    state: present
+  tags: aws
+  become: yes
+
+- name: Import Dockers official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+  tags: aws
+  become: yes
+    
+- name: Add docker apt repo
+  apt_repository:
+    repo: deb https://download.docker.com/linux/debian bookworm stable
+    filename: docker-ce
+    state: present
+  tags: aws
+  become: yes
+
+- name: Install docker apps
+  apt:
+    name: 
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io 
+      - docker-buildx-plugin 
+      - docker-compose-plugin
     state: present
   tags: aws
   become: yes
