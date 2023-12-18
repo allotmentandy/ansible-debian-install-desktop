@@ -33,3 +33,12 @@
 #   roles:
 #     - { role: chrisjohnson00.jackett, tags: ["jackett"]}
 #   become: yes
+
+- name: Install minikube
+  hosts: all
+  roles:
+    - role: gantsign.minikube 
+  tags: aws
+  become: yes
+
+

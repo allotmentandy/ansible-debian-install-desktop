@@ -28,10 +28,13 @@ dec 2023
 
 added jackett via galaxy see
 https://galaxy.ansible.com/ui/standalone/roles/chrisjohnson00/jackett/
-
 ansible-playbook -i hosts workstation.yml --ask-become-pass --ask-pass --tags "jackett"
 
 
 added aws/kubernetes
-
 ansible-playbook -i hosts workstation.yml --ask-become-pass --ask-pass --tags "aws"
+
+added minikube
+# ansible-galaxy role install gantsign.minikube
+
+
