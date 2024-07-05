@@ -34,7 +34,21 @@ ansible-playbook -i hosts workstation.yml --ask-become-pass --ask-pass --tags "j
 added aws/kubernetes
 ansible-playbook -i hosts workstation.yml --ask-become-pass --ask-pass --tags "aws"
 
+
+
 added minikube
 # ansible-galaxy role install gantsign.minikube
 
 
+add helm
+# ansible-galaxy role install geerlingguy.helm
+
+
+
+add php 8.1 gd
+ansible-playbook -i hosts workstation.yml --ask-become-pass --ask-pass --tags "php8.1"
+
+
+
+ADD Php 8.3
+ansible-playbook -i hosts workstation.yml --ask-become-pass --ask-pass --tags "php8.3"

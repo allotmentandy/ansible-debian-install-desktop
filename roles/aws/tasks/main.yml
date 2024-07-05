@@ -17,12 +17,13 @@
   tags: aws
   become: yes
 
-- name: Installing Kubernetes Cluster Packages.
+- name: Installing Kubernetes Cluster Packages and helm.
   apt: 
     name:
      # - kubeadm
      - kubelet
      - kubectl
+     - kubernetes-helm
     state: present
   tags: aws
   become: yes
@@ -58,8 +59,9 @@
       - containerd.io 
       - docker-buildx-plugin 
       - docker-compose-plugin
+      - virtualbox
+      - virtualbox-guest-additions-iso
     state: present
   tags: aws
   become: yes
-
 

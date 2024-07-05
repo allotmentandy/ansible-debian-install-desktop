@@ -14,6 +14,7 @@
       - php-xml 
       - php-curl
       - php-codesniffer
+      - php-zip
     state: present
     cache_valid_time: 3600
   become: True
@@ -115,6 +116,7 @@
       - php8.1-opcache
       - php8.1-xml
       - php8.1-fpm 
+      - php8.1-gd
       - libapache2-mod-php8.1
     state: present
     cache_valid_time: 3600
@@ -150,7 +152,32 @@
 #     name: php8.1-fpm
 #     enabled: yes
 
+# install php8.3
 
+- name: install php 8.3 packages
+  tags: php8.3
+  apt:
+    name:
+      - php8.3
+      - php8.3-mysql
+      - libapache2-mod-php
+      - php8.3-mysql
+      - php8.3-cli
+      - php8.3-common
+      - php8.3-snmp
+      - php8.3-ldap
+      - php8.3-curl
+      - php8.3-mbstring
+      - php8.3-zip
+      - php8.3-tidy
+      - php8.3-opcache
+      - php8.3-xml
+      - php8.3-fpm 
+      - php8.3-gd
+      - libapache2-mod-php8.3
+    state: present
+    cache_valid_time: 3600
+  become: True
 
 - name: ensure apache is restarted
   service:
