@@ -31,7 +31,7 @@
 - name: install brave the apt key
   become: true
   become_method: su
-  shell: curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+  shell: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0686B78420038257
 
 - name: install brave add the apt repository
   become: true
@@ -39,7 +39,8 @@
   apt_repository:
     repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main  
     state: present
-
+    update_cache: true
+    
 - name: Install Brave
   become: yes
   become_method: su
@@ -88,6 +89,7 @@
   apt_key: 
     url: "https://packages.microsoft.com/keys/microsoft.asc"
     state: present
+  become: true
 
 - name: Microsoft Edge - Add repository into sources list
   apt_repository:

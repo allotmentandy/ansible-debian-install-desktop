@@ -146,14 +146,25 @@
       - alsa-utils
       - orage
       - sqlmap
-      - wpscan
-      - cmseek
+      # - wpscan
+      # - cmseek
     state: present
   become: yes
 
 - name: Setup SSHD
   service: name=ssh state=started enabled=yes
 
+- name: Install python3-full
+  ansible.builtin.package:
+    name: python3-full
+    state: present
+  become: yes
+
+# - name: Install PySol using pip
+#   ansible.builtin.pip:
+#     name: PySolFC
+#     state: present
+#   become: yes
 
 # - name: Install webp thumbnailer
 #   template:

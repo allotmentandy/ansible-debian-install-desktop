@@ -8,31 +8,29 @@
   tags: aws
   become: yes
 
-- name: Add Kubernetes Repository
-  apt_repository:
-    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main 
-    state: present
-    filename: kubernetes
-    mode: 0600
-  tags: aws
-  become: yes
+# - name: Add Kubernetes Repository
+#   apt_repository:
+#     repo: deb http://apt.kubernetes.io/ kubernetes-xenial main 
+#     state: present
+#     filename: kubernetes
+#   become: true
 
-- name: Installing Kubernetes Cluster Packages and helm.
-  apt: 
-    name:
-     # - kubeadm
-     - kubelet
-     - kubectl
-     - kubernetes-helm
-    state: present
-  tags: aws
-  become: yes
+# - name: Installing Kubernetes Cluster Packages and helm.
+#   apt: 
+#     name:
+#      # - kubeadm
+#      - kubelet
+#      - kubectl
+#      - kubernetes-helm
+#     state: present
+#   tags: aws
+#   become: yes
 
 - name: Package | Install aws and kubernetes packages
   apt:
     name:
       - awscli
-      - eksctl
+      # - eksctl
     state: present
   tags: aws
   become: yes
@@ -59,8 +57,8 @@
       - containerd.io 
       - docker-buildx-plugin 
       - docker-compose-plugin
-      - virtualbox
-      - virtualbox-guest-additions-iso
+      # - virtualbox
+      # - virtualbox-guest-additions-iso
     state: present
   tags: aws
   become: yes

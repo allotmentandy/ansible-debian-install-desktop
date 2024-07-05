@@ -32,12 +32,14 @@
     state: present
     
 
-- name: Add HashiCorp repo.
-  become: yes
-  apt_repository:
-    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com stable main"
+- name: Add HashiCorp repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     state: present
-    
+    filename: hashicorp
+    update_cache: yes 
+  become_method: su
+  become: yes
 
 - name: Install HashiCorp tools.
   become: yes
