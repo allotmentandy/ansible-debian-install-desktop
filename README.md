@@ -18,7 +18,7 @@ ansible-playbook -i hosts workstation.yml --ask-become-pass --ask-pass
 on the  machine install sshpass to allow access and setup the key
 
 ```
-apt-get install sshpass
+apt-get install sshpass ssh
 ```
 
 

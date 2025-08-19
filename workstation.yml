@@ -10,16 +10,18 @@
     - design       # Design pack
     - composer
     # - nodejs    # commented out for now
-    - browsers
-    - dev
+    # - browsers
+    # - dev
     - multimedia
     - virtualization
     - awesome
-    - sublime
+    # - sublime
     - php
     - ufw
     # - mysql
-    - aws
+    # - aws
+    - new
+    # - allPackages # 5000+ packages slow!!
 
 
 

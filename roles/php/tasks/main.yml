@@ -13,7 +13,7 @@
       - php-bcmath
       - php-xml 
       - php-curl
-      - php-codesniffer
+      # - php-codesniffer
       - php-zip
     state: present
     cache_valid_time: 3600
@@ -35,92 +35,92 @@
 
 # install php8.0
 
-- name: Add dependencies for PHP versions (Debian).
-  apt:
-    name:
-      - apt-transport-https
-      - ca-certificates
-    state: present
-  become: True
+# - name: Add dependencies for PHP versions (Debian).
+#   apt:
+#     name:
+#       - apt-transport-https
+#       - ca-certificates
+#     state: present
+#   become: True
 
-- name: Add Ondrej Sury's apt key (Debian).
-  apt_key:
-    url: https://packages.sury.org/php/apt.gpg
-    id: 15058500A0235D97F5D10063B188E2B695BD4743
-    state: present
-  become: True
+# - name: Add Ondrej Sury's apt key (Debian).
+#   apt_key:
+#     url: https://packages.sury.org/php/apt.gpg
+#     id: 15058500A0235D97F5D10063B188E2B695BD4743
+#     state: present
+#   become: True
 
-- name: Add Ondrej Sury's repo (Debian).
-  apt_repository:
-    repo: "deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main"
-    state: present
-  register: php_ondrej_debian_repo
-  become: True
+# - name: Add Ondrej Sury's repo (Debian).
+#   apt_repository:
+#     repo: "deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main"
+#     state: present
+#   register: php_ondrej_debian_repo
+#   become: True
 
-- name: Update apt caches after repo is added (Debian).
-  apt: update_cache=true
-  when:
-    - php_ondrej_debian_repo.changed
-  become: True
+# - name: Update apt caches after repo is added (Debian).
+#   apt: update_cache=true
+#   when:
+#     - php_ondrej_debian_repo.changed
+#   become: True
 
-- name: install php 8.0 packages
-  apt:
-    name:
-      - php8.0
-      - php-mysql
-      - libapache2-mod-php
-      - php8.0-mysql
-      - php8.0-cli
-      - php8.0-common
-      - php8.0-snmp
-      - php8.0-ldap
-      - php8.0-curl
-      - php8.0-mbstring
-      - php8.0-zip
-      - php8.0-tidy
-      - php8.0-opcache
-      - php8.0-xml
-      - php8.0-fpm 
-      - libapache2-mod-php8.0
-    state: present
-    cache_valid_time: 3600
-  become: True
+# - name: install php 8.0 packages
+#   apt:
+#     name:
+#       - php8.0
+#       - php-mysql
+#       - libapache2-mod-php
+#       - php8.0-mysql
+#       - php8.0-cli
+#       - php8.0-common
+#       - php8.0-snmp
+#       - php8.0-ldap
+#       - php8.0-curl
+#       - php8.0-mbstring
+#       - php8.0-zip
+#       - php8.0-tidy
+#       - php8.0-opcache
+#       - php8.0-xml
+#       - php8.0-fpm 
+#       - libapache2-mod-php8.0
+#     state: present
+#     cache_valid_time: 3600
+#   become: True
 
 
-- name: Enable the Apache2 module proxy_fcgi for php to work
-  community.general.apache2_module:
-    state: present
-    name: proxy_fcgi
-  become: True
+# - name: Enable the Apache2 module proxy_fcgi for php to work
+#   community.general.apache2_module:
+#     state: present
+#     name: proxy_fcgi
+#   become: True
 
 
   
-# install php8.1
+# # install php8.1
 
-- name: install php 8.1 packages
-  tags: php8.1
-  apt:
-    name:
-      - php8.1
-      - php-mysql
-      - libapache2-mod-php
-      - php8.1-mysql
-      - php8.1-cli
-      - php8.1-common
-      - php8.1-snmp
-      - php8.1-ldap
-      - php8.1-curl
-      - php8.1-mbstring
-      - php8.1-zip
-      - php8.1-tidy
-      - php8.1-opcache
-      - php8.1-xml
-      - php8.1-fpm 
-      - php8.1-gd
-      - libapache2-mod-php8.1
-    state: present
-    cache_valid_time: 3600
-  become: True
+# # - name: install php 8.1 packages
+# #   tags: php8.1
+# #   apt:
+# #     name:
+# #       - php8.1
+# #       - php-mysql
+# #       - libapache2-mod-php
+# #       - php8.1-mysql
+# #       - php8.1-cli
+# #       - php8.1-common
+# #       - php8.1-snmp
+# #       - php8.1-ldap
+# #       - php8.1-curl
+# #       - php8.1-mbstring
+# #       - php8.1-zip
+# #       - php8.1-tidy
+# #       - php8.1-opcache
+# #       - php8.1-xml
+# #       - php8.1-fpm 
+# #       - php8.1-gd
+# #       - libapache2-mod-php8.1
+# #     state: present
+# #     cache_valid_time: 3600
+# #   become: True
 
 # - name: Stop service php8.0-fpm on debian, if running
 #   tags: php8.1
@@ -154,33 +154,33 @@
 
 # install php8.3
 
-- name: install php 8.3 packages
-  tags: php8.3
-  apt:
-    name:
-      - php8.3
-      - php8.3-mysql
-      - libapache2-mod-php
-      - php8.3-mysql
-      - php8.3-cli
-      - php8.3-common
-      - php8.3-snmp
-      - php8.3-ldap
-      - php8.3-curl
-      - php8.3-mbstring
-      - php8.3-zip
-      - php8.3-tidy
-      - php8.3-opcache
-      - php8.3-xml
-      - php8.3-fpm 
-      - php8.3-gd
-      - libapache2-mod-php8.3
-    state: present
-    cache_valid_time: 3600
-  become: True
+# - name: install php 8.3 packages
+#   tags: php8.3
+#   apt:
+#     name:
+#       - php8.3
+#       - php8.3-mysql
+#       - libapache2-mod-php
+#       - php8.3-mysql
+#       - php8.3-cli
+#       - php8.3-common
+#       - php8.3-snmp
+#       - php8.3-ldap
+#       - php8.3-curl
+#       - php8.3-mbstring
+#       - php8.3-zip
+#       - php8.3-tidy
+#       - php8.3-opcache
+#       - php8.3-xml
+#       - php8.3-fpm 
+#       - php8.3-gd
+#       - libapache2-mod-php8.3
+#     state: present
+#     cache_valid_time: 3600
+#   become: True
 
-- name: ensure apache is restarted
-  service:
-    name: apache2
-    state: restarted
-  become: True
+# - name: ensure apache is restarted
+#   service:
+#     name: apache2
+#     state: restarted
+#   become: True

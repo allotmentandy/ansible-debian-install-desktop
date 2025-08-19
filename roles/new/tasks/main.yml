@@ -1,0 +1,192 @@
+---
+
+# - name: Install Vivaldi without apt_key
+#   apt:
+#     name: wget
+#     state: present
+
+# - name: Download Vivaldi GPG key
+#   get_url:
+#     url: https://repo.vivaldi.com/archive/linux_signing_key.pub
+#     dest: /usr/share/keyrings/vivaldi-browser.gpg
+#     mode: '0644'
+#   become: True
+
+# - name: Add Vivaldi repo source file
+#   copy:
+#     dest: /etc/apt/sources.list.d/vivaldi.list
+#     content: "deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/vivaldi-browser.gpg] https://repo.vivaldi.com/stable/deb/ stable main\n"
+#     mode: '0644'
+#   become: True
+
+# - name: Update APT
+#   apt:
+#     update_cache: yes
+#   become: True    
+
+# - name: Install Vivaldi
+#   apt:
+#     name: vivaldi-stable
+#     state: present
+#   become: True
+
+
+- name: Download Sublime Text GPG key and save as keyring
+  ansible.builtin.get_url:
+    url: https://download.sublimetext.com/sublimehq-pub.gpg
+    dest: /usr/share/keyrings/sublimehq-pub.gpg
+    mode: '0644'
+  become: True
+
+- name: Add Sublime Text repository with signed-by option
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/sublime-text.list
+    content: |
+      deb [signed-by=/usr/share/keyrings/sublimehq-pub.gpg] https://download.sublimetext.com/ apt/stable/
+  become: True
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: True
+
+- name: Install Sublime Text
+  ansible.builtin.apt:
+    name: sublime-text
+    state: present
+  become: True
+
+
+    
+
+- name: Download Microsoft GPG key and save as keyring
+  ansible.builtin.get_url:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    dest: /usr/share/keyrings/microsoft.gpg
+    mode: '0644'
+  become: True
+
+- name: Add Microsoft VS Code repository with signed-by option
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/vscode.list
+    content: |
+      deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main
+  become: True
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: True
+
+- name: Install Visual Studio Code
+  ansible.builtin.apt:
+    name: code
+    state: present
+  become: True
+
+
+
+
+
+- name: Download VSCodium GPG key and save as keyring
+  ansible.builtin.get_url:
+    url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+    dest: /usr/share/keyrings/vscodium-archive-keyring.gpg
+    mode: '0644'
+  become: True
+
+- name: Add VSCodium repository using signed-by option
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/vscodium.list
+    content: |
+      deb [arch=amd64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main
+  become: True
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: True
+
+- name: Install VSCodium
+  ansible.builtin.apt:
+    name: codium
+    state: present
+  become: True
+
+
+
+
+- name: Download Google Chrome signing key
+  ansible.builtin.get_url:
+    url: https://dl.google.com/linux/linux_signing_key.pub
+    dest: /usr/share/keyrings/google-chrome.gpg
+    mode: '0644'
+  become: True
+
+- name: Add Google Chrome repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main"
+    filename: google-chrome
+    state: present
+  become: True
+
+- name: Install Google Chrome
+  ansible.builtin.apt:
+    name: google-chrome-stable
+    update_cache: yes
+    state: present
+  become: True
+
+
+- name: Download Opera GPG key and save as keyring
+  ansible.builtin.get_url:
+    url: https://deb.opera.com/archive.key
+    dest: /usr/share/keyrings/opera-browser.gpg
+    mode: '0644'
+  become: True
+
+- name: Add Opera repository with signed-by option
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/opera.list
+    content: |
+      deb [arch=amd64 signed-by=/usr/share/keyrings/opera-browser.gpg] https://deb.opera.com/opera-stable/ stable non-free
+  become: True
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: True
+
+- name: Install Opera browser
+  ansible.builtin.apt:
+    name: opera-stable
+    state: present
+  become: True
+
+
+
+
+- name: Download Vivaldi GPG key and save as keyring
+  ansible.builtin.get_url:
+    url: https://repo.vivaldi.com/archive/linux_signing_key.pub
+    dest: /usr/share/keyrings/vivaldi-browser.gpg
+    mode: '0644'
+  become: True
+
+- name: Add Vivaldi repository with signed-by option
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/vivaldi.list
+    content: |
+      deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=amd64] https://repo.vivaldi.com/stable/deb/ stable main
+  become: True
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: True
+
+- name: Install Vivaldi stable browser
+  ansible.builtin.apt:
+    name: vivaldi-stable
+    state: present
+  become: True

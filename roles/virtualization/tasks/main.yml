@@ -7,8 +7,8 @@
       - vagrant
       - podman
       - buildah
-      - docker
-      - docker-compose
+      # - docker
+      # - docker-compose
       - binutils
       - gcc
       - make
@@ -19,9 +19,9 @@
   become: yes
   become_method: su
   
-- name: Enable docker
-  service:
-    name: docker
-    state: started
-    enabled: yes
+# - name: Enable docker
+#   service:
+#     name: docker
+#     state: started
+#     enabled: yes
 
