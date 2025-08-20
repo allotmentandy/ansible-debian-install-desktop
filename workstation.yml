@@ -5,7 +5,6 @@
     - group_vars/all.yml
 
   roles:
-
     - common       # List of essential packages
     - design       # Design pack
     - composer
@@ -20,7 +19,7 @@
     - ufw
     # - mysql
     # - aws
-    - new
+    - new # browsers and software NOT using apt-key
     # - allPackages # 5000+ packages slow!!
 
 
